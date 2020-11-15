@@ -1,20 +1,20 @@
 <template>
-  <div class="home">
+  <div class="person">
     <NavBar />
-    <SearchFilterOportunities />
+    <SearchFilterPeople />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/NavBar.vue'
-import SearchFilterOportunities from '@/components/SearchFilterOportunities.vue'
+import SearchFilterPeople from '@/components/SearchFilterPeople.vue'
 
 export default {
-  name: 'Home',
+  name: 'Person',
   components: {
     NavBar,
-    SearchFilterOportunities
+    SearchFilterPeople
   }
 }
 </script>
