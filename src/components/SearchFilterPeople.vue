@@ -15,25 +15,23 @@
             <b-row no-gutters>
               <b-col md="6">
                 <b-card-img
-                 :src="getCompanyImg(post)"
+                 :src="getPersonImg(post)"
                   alt="Image"
-                  class="rounded-0"
+                  class="rounded-1"
                 ></b-card-img>
               </b-col>
               <b-col md="6">
-                <b-card-body :title="post.objective">
+                <b-card-body :title="post.person.name">
                   <b-card-text>
-                    <p>{{ getBaseSalary(post) }}</p>
+                    <p><strong>{{ post.person.professionalHeadline }}</strong></p>
                   </b-card-text>
                   <b-card-text>
-                    <p v-html="post.serpTags.description"></p>
+                    <p>{{ post.person.summaryOfBio }}</p>
                   </b-card-text>
-              
                 </b-card-body>
               </b-col>
             </b-row>
           </b-card>
-
         </b-card-group>
       </b-col>
     </b-row>
@@ -46,22 +44,24 @@ export default {
   data() {
     return {
       search: '',
-      postIDs: [{ id: 'Vrojvpdy' }, { id: 'Yd62lOdp' }, { id: 'VWYzP4wN' }],
+      postIDs: [
+        { id: 'djra26111990' }, 
+        { id: 'kc' }, 
+        { id: 'felixtorrenegrag' }, 
+        { id: 'torrenegra' }, 
+        { id: 'emiliojimenez' },
+        { id: 'taniazapata'}],
       postList: [],
     }
   },
   methods: {
-    getCompanyImg(post) {
-      return post.serpTags.hiringOrganization.logo
-    },
-    getBaseSalary(post) {
-      let { serpTags } = post
-      return `${serpTags.baseSalary.currency}: ${serpTags.baseSalary.value.minValue} - ${serpTags.baseSalary.value.maxValue}`
-    },
+    getPersonImg(post) {
+      return post.person.picture
+    }
   },
   mounted: function() {
     this.postIDs.map((elem) => {
-      fetch(`http://localhost:3000/api/v1/co/${elem.id}`, {
+      fetch(`http://localhost:3000/api/v1/bio/${elem.id}`, {
         method: 'get',
       })
         .then((response) => {
@@ -75,9 +75,23 @@ export default {
   computed: {
     filteredList() {
       return this.postList.filter((post) => {
-        return post.objective.toLowerCase().includes(this.search.toLowerCase())
+        return post.person.name.toLowerCase().includes(this.search.toLowerCase())
       })
     },
   },
 }
 </script>
+
+<style scoped>
+img.rounded-1.card-img {
+    border-radius: 278px;
+    float: left;
+    position: relative;
+    width: 45%;
+    left: 25%;
+    top: 10%;
+}
+.card-body {
+  padding: 3.25rem!important;
+}
+</style>

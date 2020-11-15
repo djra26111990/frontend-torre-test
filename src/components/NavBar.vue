@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand href="./">TORRE</b-navbar-brand>
+    <b-navbar-brand href="/">TORRE</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -8,16 +8,8 @@
       
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-       <b-nav-item href="#">Search</b-nav-item>
-       <b-nav-item href="#">Jobs</b-nav-item>
-       <b-nav-item href="#">Your Genome</b-nav-item>
-        <b-nav-item-dropdown right>
-          <!-- Using 'button-content' slot -->
-          <template #button-content>
-            <em>User</em>
-          </template>
-          <b-dropdown-item href="#">Your Profile</b-dropdown-item>
-        </b-nav-item-dropdown>
+       <b-nav-item href="/">Search job</b-nav-item>
+       <b-nav-item href="/Person">Candidate</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
