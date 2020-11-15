@@ -61,7 +61,7 @@ export default {
   },
   mounted: function() {
     this.postIDs.map((elem) => {
-      fetch(`http://localhost:3000/api/v1/bio/${elem.id}`, {
+      fetch(`https://torre-backend-test.herokuapp.com/api/v1/bio/${elem.id}`, {
         method: 'get',
       })
         .then((response) => {
