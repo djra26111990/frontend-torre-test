@@ -5,7 +5,7 @@
             <b-card-group v-for="post in filteredList" :key="post.id" deck>
             
             <b-card bg-variant="dark" :header="post.objective" text-variant="white" class="text-center">
-                <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+                <b-card-text>hola mundo</b-card-text>
             </b-card>
 
             </b-card-group>
@@ -23,14 +23,14 @@ export default {
       postIDs: [
           { id: 'Vrojvpdy' },
           { id: 'Yd62lOdp' }, 
-          { id: 'VWYzP4wN' }
+          { id: 'VWYzP4wN' },
       ],
       postList : []
     }
   },
   mounted: function() {
       this.postIDs.map(elem => {
-          fetch('https://torre.co/api/opportunities/' + elem.id, {
+          fetch(`http://localhost:3000/api/v1/co/${elem.id}`, {
         method: 'get'
      })
         .then((response) => {
@@ -46,7 +46,7 @@ export default {
     filteredList() {
         
       return this.postList.filter(post => {
-        return post.objective.toLowerCase().includes(this.search.toLowerCase())
+        return post.objective.toLowerCase().includes(this.search.toLowerCase()) 
       })
     }
   }
